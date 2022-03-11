@@ -9,6 +9,7 @@ import ItemListFood from './ItemListFood';
 import ItemValue from './ItemValue';
 import EmptyOrder from './EmptyOrder';
 import OrderTabSection from './OrderTabSection';
+import ProfileTabSection from './ProfileTabSection';
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   ItemValue,
   EmptyOrder,
   OrderTabSection,
+  ProfileTabSection,
 };
