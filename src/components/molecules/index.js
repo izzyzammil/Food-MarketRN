@@ -8,6 +8,7 @@ import Counter from './Counter';
 import ItemListFood from './ItemListFood';
 import ItemValue from './ItemValue';
 import EmptyOrder from './EmptyOrder';
+import OrderTabSection from './OrderTabSection';
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   ItemListFood,
   ItemValue,
   EmptyOrder,
+  OrderTabSection,
 };
