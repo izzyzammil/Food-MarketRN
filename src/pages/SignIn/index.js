@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {Button, Gap, Header, TextInput} from '../../components';
 import {useForm} from '../../utils';
+import Axios from 'axios';
 
 const SignIn = ({navigation}) => {
   // const [email, setEmail] = useState('');
@@ -14,6 +15,13 @@ const SignIn = ({navigation}) => {
 
   const onSubmit = () => {
     console.log('form', form);
+    Axios.post('http://foodmarket-backend.buildwithangga.id/api/login', form)
+      .then(res => {
+        console.log('success', res);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
   };
   return (
     <View style={styles.page}>
