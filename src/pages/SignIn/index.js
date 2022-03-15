@@ -5,9 +5,6 @@ import {useForm} from '../../utils';
 import Axios from 'axios';
 
 const SignIn = ({navigation}) => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
   const [form, setForm] = useForm({
     email: '',
     password: '',

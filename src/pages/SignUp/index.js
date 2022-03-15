@@ -1,8 +1,10 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Button, Gap, Header, TextInput} from '../../components';
+import {useSelector} from 'react-redux';
 
 const SignUp = ({navigation}) => {
+  const globalState = useSelector(state => state.globalReducer);
   return (
     <View style={styles.page}>
       <Header
@@ -18,6 +20,7 @@ const SignUp = ({navigation}) => {
             </View>
           </View>
         </View>
+        <Text>{`status error : ${globalState.isError}`}</Text>
         <TextInput label={'Full Name'} placeholder={'Type your full name'} />
         <Gap height={16} />
         <TextInput label={'Password'} placeholder={'Type your password'} />
