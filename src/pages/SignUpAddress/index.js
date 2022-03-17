@@ -2,7 +2,7 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Button, Gap, Header, Select, TextInput} from '../../components';
 import {useForm} from '../../utils';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Axios from 'axios';
 import {showMessage, hideMessage} from 'react-native-flash-message';
 
@@ -14,6 +14,8 @@ const SignUpAddress = ({navigation}) => {
     city: 'Bangkalan',
   });
 
+  const dispatch = useDispatch();
+
   const registerReducer = useSelector(state => state.registerReducer);
 
   const onSubmit = () => {
@@ -21,12 +23,15 @@ const SignUpAddress = ({navigation}) => {
       ...form,
       ...registerReducer,
     };
+    dispatch({type: 'SET_LOADING', value: true});
     Axios.post('http://foodmarket-backend.buildwithangga.id/api/register', data)
       .then(res => {
+        dispatch({type: 'SET_LOADING', value: false});
         showMessage('Register success', 'success');
         navigation.replace('SuccessSignUp');
       })
       .catch(error => {
+        dispatch({type: 'SET_LOADING', value: false});
         showToast(error?.response?.data?.message);
       });
   };
@@ -45,7 +50,7 @@ const SignUpAddress = ({navigation}) => {
         subTitle={'Make sure it’s valid'}
         onBack={() => {}}
       />
-      <ScrollView>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View style={styles.container}>
           <TextInput
             label={'Phone No.'}
