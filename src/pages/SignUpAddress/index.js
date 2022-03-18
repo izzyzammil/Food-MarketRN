@@ -3,8 +3,7 @@ import React from 'react';
 import {Button, Gap, Header, Select, TextInput} from '../../components';
 import {useForm} from '../../utils';
 import {useDispatch, useSelector} from 'react-redux';
-import Axios from 'axios';
-import {showMessage, hideMessage} from 'react-native-flash-message';
+import {setLoading, signUpAction} from '../../redux/action';
 
 const SignUpAddress = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -16,33 +15,17 @@ const SignUpAddress = ({navigation}) => {
 
   const dispatch = useDispatch();
 
-  const registerReducer = useSelector(state => state.registerReducer);
+  const {registerReducer, photoReducer} = useSelector(state => state);
 
   const onSubmit = () => {
     const data = {
       ...form,
       ...registerReducer,
     };
-    dispatch({type: 'SET_LOADING', value: true});
-    Axios.post('http://foodmarket-backend.buildwithangga.id/api/register', data)
-      .then(res => {
-        dispatch({type: 'SET_LOADING', value: false});
-        showMessage('Register success', 'success');
-        navigation.replace('SuccessSignUp');
-      })
-      .catch(error => {
-        dispatch({type: 'SET_LOADING', value: false});
-        showToast(error?.response?.data?.message);
-      });
+    dispatch(setLoading(true));
+    dispatch(signUpAction(data, photoReducer, navigation));
   };
 
-  const showToast = (message, type) => {
-    showMessage({
-      message,
-      type: type === 'success' ? 'success' : 'danger',
-      backgroundColor: type === 'success' ? '#1ABC9C' : '#D9435E',
-    });
-  };
   return (
     <View style={styles.page}>
       <Header
