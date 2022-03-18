@@ -44,3 +44,20 @@ export const signUpAction =
         showMessage(error?.response?.data?.message);
       });
   };
+
+export const signInAction = (form, navigation) => dispatch => {
+  dispatch(setLoading(true));
+  Axios.post(`${API_HOST.url}/login`, form)
+    .then(res => {
+      const profile = res.data.data.user;
+      const token = `${res.data.data.token_type} ${res.data.data.access_token}`;
+      dispatch(setLoading(false));
+      storeData('token', {value: token});
+      storeData('userProfile', profile);
+      navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
+    })
+    .catch(err => {
+      dispatch(setLoading(false));
+      showMessage(err?.response?.data?.message);
+    });
+};
