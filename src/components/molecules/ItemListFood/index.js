@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Rating from '../Rating';
+import Number from '../Number';
 
 const ItemListFood = ({
   image,
@@ -20,9 +21,10 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.title}>{name}</Text>
-              <Text style={styles.price}>IDR {price}</Text>
+              <Number number={price} />
+              {/* <Text style={styles.price}>IDR {price}</Text> */}
             </View>
-            <Rating rating={rating} />
+            <Rating number={rating} />
           </>
         );
       case 'order-summary':
@@ -68,7 +70,7 @@ const ItemListFood = ({
               <Text style={styles.title}>{name}</Text>
               <Text style={styles.price}>IDR {price}</Text>
             </View>
-            <Rating rating={rating} />
+            {/* <Rating rating={rating} /> */}
           </>
         );
     }
