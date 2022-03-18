@@ -31,7 +31,7 @@ const SignUpAddress = ({navigation}) => {
       <Header
         title={'Address'}
         subTitle={'Make sure it’s valid'}
-        onBack={() => {}}
+        onBack={() => navigation.goBack()}
       />
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <View style={styles.container}>

@@ -61,7 +61,7 @@ const SignUp = ({navigation}) => {
       <Header
         title={'Sign Up'}
         subTitle={'Register and eat'}
-        onBack={() => {}}
+        onBack={() => navigation.goBack()}
       />
       <ScrollView>
         <View style={styles.container}>
