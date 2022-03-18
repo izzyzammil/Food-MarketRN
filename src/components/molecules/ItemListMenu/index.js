@@ -1,13 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {IcNext} from '../../../assets';
 
-const ItemListMenu = ({text}) => {
+const ItemListMenu = ({text, onPress}) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{text}</Text>
-      <IcNext />
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
+        <Text style={styles.text}>{text}</Text>
+        <IcNext />
+      </View>
+    </TouchableOpacity>
   );
 };
 
