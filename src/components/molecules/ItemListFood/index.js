@@ -21,8 +21,7 @@ const ItemListFood = ({
           <>
             <View style={styles.content}>
               <Text style={styles.title}>{name}</Text>
-              <Number number={price} />
-              {/* <Text style={styles.price}>IDR {price}</Text> */}
+              <Number number={price} styles={styles.price} />
             </View>
             <Rating number={rating} />
           </>
