@@ -12,7 +12,7 @@ import {useState} from 'react';
 import {getData} from '../../utils';
 
 const FoodDetail = ({navigation, route}) => {
-  const {name, picturePath, description, ingredients, rate, price} =
+  const {id, name, picturePath, description, ingredients, rate, price} =
     route.params;
 
   const [totalItem, setTotalItem] = useState(1);
@@ -36,6 +36,7 @@ const FoodDetail = ({navigation, route}) => {
     const total = totalPrice + driver + tax;
     const data = {
       item: {
+        id: id,
         name: name,
         price: price,
         picturePath: picturePath,
