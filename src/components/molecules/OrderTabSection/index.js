@@ -59,7 +59,7 @@ const InProgress = () => {
             key={order.id}
             image={{uri: order.food.picturePath}}
             onPress={() => {
-              navigation.navigate('OrderDetail');
+              navigation.navigate('OrderDetail', order);
             }}
             type={'in-progress'}
             items={order.quantity}
@@ -89,7 +89,7 @@ const PastOrder = () => {
             key={order.id}
             image={{uri: order.food.picturePath}}
             onPress={() => {
-              navigation.navigate('OrderDetail');
+              navigation.navigate('OrderDetail', order);
             }}
             type={'past-order'}
             items={order.quantity}
