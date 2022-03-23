@@ -32,16 +32,17 @@ const OrderSummary = ({navigation, route}) => {
     getData('token').then(resToken => {
       Axios.post(`${API_HOST.url}/checkout`, data, {
         headers: {
-          Authorization: resToken,
+          Authorization: resToken.value,
         },
       })
         .then(res => {
           console.log('success checkout: ', res.data);
+          console.log('res tolem: ', resToken);
           setIsPaymentOpen(true);
           setPaymentURL(res.data.data.payment_url);
         })
         .catch(err => {
-          console.log('error: ', err);
+          console.log('error: ', err.message);
         });
     });
   };
